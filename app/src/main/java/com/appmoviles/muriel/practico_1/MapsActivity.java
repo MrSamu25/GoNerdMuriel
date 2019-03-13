@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +82,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private Button btn_cafeteria;
 
+    private Switch sw_maps_lugares;
+
     //Relaciones con el generador
     private GeneradorPreguntas generadorPreguntas;
     List<String> pregunta;
@@ -127,8 +130,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //TODO BORRAR
-        puntos_totales = 2000;
+        //Puntos con los que inica un jugador
+        puntos_totales = 0;
 
         //Generador de preguntas
         generadorPreguntas = new GeneradorPreguntas();
@@ -145,6 +148,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btn_cafeteria = findViewById((R.id.btn_cafeteria));
 
         tv_maps_puntos_totales = findViewById((R.id.tv_maps_puntos_totales));
+
+        sw_maps_lugares = findViewById(R.id.sw_maps_lugares);
+
+        sw_maps_lugares.setEnabled(false);
 
         btn_edificio_M.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,6 +207,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivityForResult(i, REQUEST_CODE_CAFETERIA);
             }
         });
+
+        sw_maps_lugares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Llama al método encargado de activar o desactivar los botones teniendo en cuenta el switch
+                verificarBotones();
+            }
+        });
+
+        tv_maps_puntos_totales.setText("" + puntos_totales);
     }
 
 
@@ -223,7 +240,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Manifest.permission.ACCESS_COARSE_LOCATION
         }, REQUEST_CODE);
 
-        manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 0, new LocationListener() {
+        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 0, new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
 
@@ -249,36 +266,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //Mueve la camara
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
-
-                if (verificarLugar(EDIFICIO_M)) {
-
-                    btn_edificio_M.setVisibility(View.VISIBLE);
-                    //Toast.makeText(MapsActivity.this, "ESTA EN EDIFICO M", Toast.LENGTH_SHORT).show();
-                } else {
-                    //Toast.makeText(MapsActivity.this, "NO ESTA EN EDIFICO M", Toast.LENGTH_SHORT).show();
-                    //btn_edificio_M.setVisibility(View.GONE);
+                //Para activar el swtich debe existir el marcadorMiPosición antes
+                if(!sw_maps_lugares.isEnabled()){
+                    Toast.makeText(MapsActivity.this, "Se activo el switch", Toast.LENGTH_SHORT);
+                    sw_maps_lugares.setEnabled(true);
                 }
 
-
-                if (verificarLugar(BIBLIOTECA)) {
-
-                    btn_biblioteca.setVisibility(View.VISIBLE);
-                    //Toast.makeText(MapsActivity.this, "ESTA EN BIBLIOTECA", Toast.LENGTH_SHORT).show();
-                } else {
-                    //Toast.makeText(MapsActivity.this, "NO ESTA EN BIBLIOTECA", Toast.LENGTH_SHORT).show();
-                    //btn_biblioteca.setVisibility(View.GONE);
-                }
-
-
-                if (verificarLugar(CAFETERIA)) {
-
-                    btn_cafeteria.setVisibility(View.VISIBLE);
-                    //Toast.makeText(MapsActivity.this, "ESTA EN LA CAFETERÍA CENTRAL", Toast.LENGTH_SHORT).show();
-                } else {
-                    //Toast.makeText(MapsActivity.this, "NO ESTA CAFETERÍA CENTRAL", Toast.LENGTH_SHORT).show();
-                    //btn_cafeteria.setVisibility(View.GONE);
-                }
-
+                //Llama al método encargado de activar o desactivar los botones teniendo en cuenta el switch
+                verificarBotones();
 
             }
 
@@ -404,6 +399,55 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .width(5)
                 .color(Color.RED));
 
+    }
+
+    //Llama al método encargado de activar o desactivar los botones teniendo en cuenta el switch
+    public void verificarBotones() {
+
+        if (verificarLugar(EDIFICIO_M)) {
+
+            btn_edificio_M.setVisibility(View.VISIBLE);
+            //Toast.makeText(MapsActivity.this, "ESTA EN EDIFICO M", Toast.LENGTH_SHORT).show();
+        } else {
+            //Toast.makeText(MapsActivity.this, "NO ESTA EN EDIFICO M", Toast.LENGTH_SHORT).show();
+
+            if (sw_maps_lugares.isChecked()) {
+                btn_edificio_M.setVisibility(View.GONE);
+            } else {
+                btn_edificio_M.setVisibility(View.VISIBLE);
+            }
+
+        }
+
+        if (verificarLugar(BIBLIOTECA)) {
+
+            btn_biblioteca.setVisibility(View.VISIBLE);
+            //Toast.makeText(MapsActivity.this, "ESTA EN BIBLIOTECA", Toast.LENGTH_SHORT).show();
+        } else {
+            //Toast.makeText(MapsActivity.this, "NO ESTA EN BIBLIOTECA", Toast.LENGTH_SHORT).show();
+
+            if (sw_maps_lugares.isChecked()) {
+                btn_biblioteca.setVisibility(View.GONE);
+            } else {
+                btn_biblioteca.setVisibility(View.VISIBLE);
+            }
+
+        }
+
+        if (verificarLugar(CAFETERIA)) {
+
+            btn_cafeteria.setVisibility(View.VISIBLE);
+            //Toast.makeText(MapsActivity.this, "ESTA EN LA CAFETERÍA CENTRAL", Toast.LENGTH_SHORT).show();
+        } else {
+            //Toast.makeText(MapsActivity.this, "NO ESTA CAFETERÍA CENTRAL", Toast.LENGTH_SHORT).show();
+
+            if (sw_maps_lugares.isChecked()) {
+                btn_cafeteria.setVisibility(View.GONE);
+            } else {
+                btn_cafeteria.setVisibility(View.VISIBLE);
+            }
+
+        }
     }
 
     public boolean verificarLugar(int lugar) {

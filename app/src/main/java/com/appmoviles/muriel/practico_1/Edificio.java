@@ -91,37 +91,37 @@ public class Edificio extends AppCompatActivity {
                 if (rb_edificio_a.isChecked()) {
 
                     if (rb_edificio_a.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA A", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_FACIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_FACIL;
                     } else {
-                        Toast.makeText(Edificio.this, "RESPUESTA INCORRECTA A", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA INCORRECTA", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (rb_edificio_b.isChecked()) {
 
                     if (rb_edificio_b.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA B ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_FACIL;
                     } else {
-                        Toast.makeText(Edificio.this, "RESPUESTA INCORRECTA B", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_FACIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (rb_edificio_c.isChecked()) {
 
                     if (rb_edificio_c.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA C", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_FACIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_FACIL;
                     } else {
-                        Toast.makeText(Edificio.this, "RESPUESTA INCORRECTA C", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA INCORRECTA", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (rb_edificio_d.isChecked()) {
 
                     if (rb_edificio_d.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA D", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_FACIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_FACIL;
                     } else {
-                        Toast.makeText(Edificio.this, "RESPUESTA INCORRECTA D", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA INCORRECTA", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(Edificio.this, "DEBE SELECCIONAR UNA PREGUNTA", Toast.LENGTH_SHORT).show();

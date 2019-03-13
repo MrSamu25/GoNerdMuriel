@@ -86,37 +86,37 @@ public class Cafeteria extends AppCompatActivity {
                 if (rb_cafeteria_a.isChecked()) {
 
                     if (rb_cafeteria_a.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Cafeteria.this, "RESPUESTA CORRECTA A", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cafeteria.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_DIFICIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_DIFICIL;
                     } else {
-                        Toast.makeText(Cafeteria.this, "RESPUESTA INCORRECTA A", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cafeteria.this, "RESPUESTA INCORRECTA", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (rb_cafeteria_b.isChecked()) {
 
                     if (rb_cafeteria_b.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Cafeteria.this, "RESPUESTA CORRECTA B ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cafeteria.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_DIFICIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_DIFICIL;
                     } else {
-                        Toast.makeText(Cafeteria.this, "RESPUESTA INCORRECTA B", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cafeteria.this, "RESPUESTA INCORRECTA", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (rb_cafeteria_c.isChecked()) {
 
                     if (rb_cafeteria_c.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Cafeteria.this, "RESPUESTA CORRECTA C", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cafeteria.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_DIFICIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_DIFICIL;
                     } else {
-                        Toast.makeText(Cafeteria.this, "RESPUESTA INCORRECTA C", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cafeteria.this, "RESPUESTA INCORRECTA", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (rb_cafeteria_d.isChecked()) {
 
                     if (rb_cafeteria_d.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Cafeteria.this, "RESPUESTA CORRECTA D", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cafeteria.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_DIFICIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_DIFICIL;
                     } else {
-                        Toast.makeText(Cafeteria.this, "RESPUESTA INCORRECTA D", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cafeteria.this, "RESPUESTA INCORRECTA", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(Cafeteria.this, "DEBE SELECCIONAR UNA PREGUNTA", Toast.LENGTH_SHORT).show();
