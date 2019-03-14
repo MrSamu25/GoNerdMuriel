@@ -3,6 +3,7 @@ package com.appmoviles.muriel.practico_1;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -35,15 +36,21 @@ public class DialogoCodigo extends DialogFragment {
 
         String nombre_producto = "";
         String codigo_qr = "";
+        Bitmap qr = null;
 
         if (this.getArguments() != null) {
             nombre_producto = (String) getArguments().get(Biblioteca.NOMBRE_PRODUCTO);
             codigo_qr = (String) getArguments().get(Biblioteca.CODIGO_QR);
+            qr = (Bitmap) getArguments().getParcelable(Biblioteca.QR);
+
         }
 
         tv_dialogo_item.setText(nombre_producto);
 
-        setearImagen(codigo_qr);
+        //CUANDO TENÍA LOS QR QUEMADOS
+        //setearImagen(codigo_qr);
+
+        iv_dialogo_codigo.setImageBitmap(qr);
 
         builder.setView(v).setNegativeButton("Cerrar", new DialogInterface.OnClickListener() {
             @Override

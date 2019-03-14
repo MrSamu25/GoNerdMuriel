@@ -6,9 +6,9 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center">
 
 
@@ -33,15 +33,14 @@
     <ImageView
         android:id="@+id/iv_dialogo_codigo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/qr_saco"/>
+        android:layout_height="wrap_content" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
         android:gravity="center"
-        android:text="Úselo en la Tienda Icesi más cercana"/>
+        android:text="Úselo en la Tienda Icesi más cercana"
+        android:textSize="18dp" />
 
 </LinearLayout>

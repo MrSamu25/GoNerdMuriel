@@ -27,6 +27,8 @@ public class Cafeteria extends AppCompatActivity {
 
     private Button btn_cafeteria_responder;
 
+    private Button btn_cafeteria_atras;
+
     private String respuesta_buena;
 
     public final static int PUNTOS_OBTENIDOS_DIFICIL = 10;
@@ -44,7 +46,7 @@ public class Cafeteria extends AppCompatActivity {
         rb_cafeteria_c = findViewById(R.id.rb_cafeteria_c);
         rb_cafeteria_d = findViewById(R.id.rb_cafeteria_d);
         btn_cafeteria_responder = findViewById(R.id.btn_cafeteria_responder);
-
+        btn_cafeteria_atras = findViewById(R.id.btn_cafeteria_atras);
 
         //Se obtienen los valores
         String operando_1 = getIntent().getStringExtra(MapsActivity.OPERANDO_1);
@@ -124,6 +126,17 @@ public class Cafeteria extends AppCompatActivity {
 
                 Intent intent = new Intent();
                 intent.putExtra(MapsActivity.PUNTOS_OBTENIDOS, "" + puntos_ganados);
+                setResult(MapsActivity.REQUEST_CODE_CAFETERIA, intent);
+                //Regresar al activity anterior
+                finish();
+            }
+        });
+
+        btn_cafeteria_atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra(MapsActivity.PUNTOS_OBTENIDOS, "" + 0);
                 setResult(MapsActivity.REQUEST_CODE_CAFETERIA, intent);
                 //Regresar al activity anterior
                 finish();

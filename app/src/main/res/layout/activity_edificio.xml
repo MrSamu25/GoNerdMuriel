@@ -88,6 +88,15 @@
             android:layout_marginTop="20dp"
             android:text="Responder" />
 
+        <Button
+            android:id="@+id/btn_edificio_atras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:text="Atras" />
+
 
     </LinearLayout>
 

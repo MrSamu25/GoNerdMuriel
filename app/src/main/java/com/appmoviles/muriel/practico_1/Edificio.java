@@ -28,6 +28,8 @@ public class Edificio extends AppCompatActivity {
 
     private Button btn_edificio_responder;
 
+    private Button btn_edificio_atras;
+
     private RadioGroup rg_edificio_conjunto_respuestas;
 
     private String respuesta_buena;
@@ -48,6 +50,7 @@ public class Edificio extends AppCompatActivity {
         rb_edificio_d = findViewById(R.id.rb_edificio_d);
         btn_edificio_responder = findViewById(R.id.btn_edificio_responder);
         rg_edificio_conjunto_respuestas = findViewById(R.id.rg_edificio_conjunto_respuestas);
+        btn_edificio_atras = findViewById(R.id.btn_edificio_atras);
 
         //Se obtienen los valores
         String operando_1 = getIntent().getStringExtra(MapsActivity.OPERANDO_1);
@@ -100,10 +103,10 @@ public class Edificio extends AppCompatActivity {
                 } else if (rb_edificio_b.isChecked()) {
 
                     if (rb_edificio_b.getText().equals(respuesta_buena)) {
-                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_FACIL + " PUNTOS", Toast.LENGTH_SHORT).show();
                         puntos_ganados = PUNTOS_OBTENIDOS_FACIL;
                     } else {
-                        Toast.makeText(Edificio.this, "RESPUESTA CORRECTA + " + PUNTOS_OBTENIDOS_FACIL + " PUNTOS", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edificio.this, "RESPUESTA INCORRECTA", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (rb_edificio_c.isChecked()) {
@@ -129,6 +132,17 @@ public class Edificio extends AppCompatActivity {
 
                 Intent intent = new Intent();
                 intent.putExtra(MapsActivity.PUNTOS_OBTENIDOS, "" + puntos_ganados);
+                setResult(MapsActivity.REQUEST_CODE_EDIFICIO, intent);
+                //Regresar al activity anterior
+                finish();
+            }
+        });
+
+        btn_edificio_atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra(MapsActivity.PUNTOS_OBTENIDOS, "" + 0);
                 setResult(MapsActivity.REQUEST_CODE_EDIFICIO, intent);
                 //Regresar al activity anterior
                 finish();

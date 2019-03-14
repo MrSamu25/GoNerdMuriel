@@ -268,7 +268,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 //Para activar el swtich debe existir el marcadorMiPosición antes
                 if(!sw_maps_lugares.isEnabled()){
-                    Toast.makeText(MapsActivity.this, "Se activo el switch", Toast.LENGTH_SHORT);
+                    Toast.makeText(MapsActivity.this, "Se activo el switch", Toast.LENGTH_LONG).show();
                     sw_maps_lugares.setEnabled(true);
                 }
 
